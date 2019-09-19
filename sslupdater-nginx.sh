@@ -15,12 +15,12 @@
 # 기본설정
 _DATE=$(date +%Y%m%d)
 _TIME=$(date +%F_%X)
-_HOME="/usr/mgmt/SSL_checker"
+_HOME="/home/SSL_checker"
 _LOGDIR="$_HOME/logs"
 _RESULT="$_LOGDIR/updater_${_DATE}.log"
 _DOWN="$_HOME/down"
 _STORAGE="ims.powdersnow.co.kr"
-_REPO="http://${_STORAGE}/ssl_key/files"
+_REPO="http://${_STORAGE}/sslkey/files"
 
 # new 인증서 저장 디렉토리
 if [ ! -d $_DOWN ]; then
@@ -88,9 +88,8 @@ function _md5() {
     # PHP 실행파일의 path 정의
     # 인증서 만료날짜를 가져오는 expire_date_output.php 에서 필요
     local php_1="/home/php/bin/php"
-    local php_2="/home/apps/php/bin/php"
-    local php_3="/usr/local/php/bin/php"
-    local php_4="/usr/local/bin/php"
+    local php_2="/usr/local/php/bin/php"
+    local php_3="/usr/local/bin/php"
 
     if [ -f $php_1 ]; then
         local _php=$php_1
@@ -98,8 +97,6 @@ function _md5() {
         local _php=$php_2
     elif [ -f $php_3 ]; then
         local _php=$php_3
-    elif [ -f $php_4 ]; then
-        local _php=$php_4
     else
         local _php=$(which php 2>/dev/null)
     fi
